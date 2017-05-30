@@ -1,0 +1,13 @@
+log_homepage:
+    path:     /
+    defaults: { _controller: LogManBundle:Default:index }
+
+log_request:
+    path:     /api/log
+    defaults: { _controller: LogManBundle:Default:getLogs }
+    methods: [POST, GET]
+    
+log_report:
+    path:     /api/report
+    defaults: { _controller: LogManBundle:Default:getReport }
+    methods: [POST, GET]    

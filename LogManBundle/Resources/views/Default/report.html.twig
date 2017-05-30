@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        	<div id="chartContainer" style="height: 400px; width: 100%;"></div>
+
+    </body>
+    <script type="text/javascript">
+        window.onload = function () {
+            var chart = new CanvasJS.Chart("chartContainer",
+                    {
+                        theme: "theme2",
+                        title: {
+                            text: "System Logs"
+                        },
+                        data: [
+                            {
+                                type: "pie",
+                                showInLegend: true,
+                                toolTipContent: "{y} - #percent %",
+                                //yValueFormatString: "#0.#,,. Million",
+                                legendText: "{indexLabel}",
+                                dataPoints: [
+                                    {% for  i in data %}
+                                        {y: {{ i.total }}, indexLabel: "{{ i.status }}" },
+                                    {% endfor %}    
+                                ]
+                            }
+                        ]
+                    });
+            chart.render();
+        }
+    </script>
+    <script src="{{ asset("bundles/log/js/canvasjs.min.js") }}"></script>
+</html>

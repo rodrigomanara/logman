@@ -1,0 +1,12 @@
+services:
+#    log.example:
+#        class: LogBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    logman.service:
+        class: LogManBundle\Manager\LogSet
+        arguments: ["@doctrine.orm.entity_manager" , "@session"]
+        calls:
+            - [setSession]
+    
+       
